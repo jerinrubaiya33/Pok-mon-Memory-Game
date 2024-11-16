@@ -1,0 +1,191 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk3OTyRgxRL6wKg4mu834sASjbtmyQh6Bd8w&s') no-repeat center center fixed;
+  background-size: cover;
+  filter: blur(8px);
+  z-index: -1;
+}
+
+.container {
+  text-align: center;
+}
+
+.title {
+  font-size: 50px;
+  margin-bottom: 10px;
+  color: rgb(255, 255, 255);
+}
+
+.moves {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 125px);
+  grid-gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.card {
+  width: 150px;
+  height: 160px;
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  perspective: 1000px;
+  position: relative;
+}
+
+.card-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.card-back {
+  background-color: transparent;
+}
+
+.card-front {
+  background-color: transparent;
+  transform: rotateY(180deg);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* Pop-up Modal CSS */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: rgba(0, 0, 0, 0.6); /* Grey transparent background */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  animation: fadeIn 0.5s;
+  width: 400px; /* Adjust the width as needed */
+}
+
+.popup-content h2 {
+  margin-bottom: 10px;
+  color: white;
+}
+
+.popup-content p {
+  margin-bottom: 20px;
+  color: white;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Media Query for smaller screens (up to 768px) */
+@media (max-width: 768px) {
+ 
+  .title {
+    font-size: 30px; /* Make the title smaller for small screens */
+  }
+
+  .moves {
+    font-size: 1.2rem; /* Slightly smaller font size for moves */
+    color: white;
+  }
+
+  .grid {
+    grid-template-columns: repeat(6, 1fr); /* 4 columns for smaller screens */
+    grid-gap: 0px; /* Reduce the gap between cards */
+  }
+
+  .card {
+    width: 68px; /* Smaller cards for mobile */
+    height: 100px;
+  }
+
+  .card img {
+    width: 100%; /* Adjust image size to fit inside the card */
+    height: 270%;
+    object-fit: contain;
+  }
+
+  .popup-content {
+    width: 90%; /* Make the pop-up width responsive */
+    max-width: 350px; /* Set a maximum width */
+  }
+
+  .button {
+    padding: 12px 20px;
+    font-size: 1rem; /* Make button font size smaller */
+  }
+}

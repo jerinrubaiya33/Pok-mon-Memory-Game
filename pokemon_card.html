@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémon Memory Game</title>
+  <link rel="stylesheet" href="pokemon_card.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Pokémon Memory Game</h1>
+    <p class="moves" id="movesCount">Moves: 0</p>
+    <div class="grid" id="cardGrid"></div>
+  </div>
+
+  <!-- Pop-up modal for game over -->
+  <div class="popup" id="gameOverPopup">
+    <div class="popup-content">
+      <h2>Game Over!</h2>
+      <p>You exceeded 20 moves. Better luck next time!</p>
+      <button class="button" id="restartGame">Restart Game</button>
+    </div>
+  </div>
+
+  <!-- Pop-up modal for winning -->
+  <div class="popup" id="congratulationsPopup">
+    <div class="popup-content">
+      <h2>Congratulations!</h2>
+      <p>You completed the game in 20 moves or less!</p>
+      <button class="button" id="restartGame">Restart Game</button>
+    </div>
+  </div>
+
+  <script src="pokemon_card.js"></script>
+</body>
+</html>
